@@ -1,0 +1,24 @@
+{
+  "name": "mi_primer_app",
+  "version": "1.0.0",
+  "description": "Primera Aplicacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaquinemaperalta/agroindustria.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaquinemaperalta/agroindustria/issues"
+  },
+  "homepage": "https://github.com/joaquinemaperalta/agroindustria#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.9"
+  }
+}
