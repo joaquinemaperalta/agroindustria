@@ -31,6 +31,24 @@ app.get('/estilos.css', (req, res) => {
   res.sendFile(__dirname +'/public/estilos/estilos.css')
 })
 
+//registro y login 
+
+app.get('/login_y_registro.html', (req, res) => {
+  res.sendFile(__dirname +'/public/login_y_registro.html')
+})
+
+//registro y login css
+
+app.get('/loginyregistro.css', (req, res) => {
+  res.sendFile(__dirname +'/public/estilos/loginyregistro.css')
+})
+
+//registro y login JavaScript
+
+app.get('/log_reg.js', (req, res) => {
+  res.sendFile(__dirname +'/public/log_reg.js')
+})
+
  //routes
 app.listen(8080,function(){
     console.log("corriendo en el puerto");
