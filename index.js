@@ -1,17 +1,3 @@
-/*const http = require('http');
-
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-}); */
 //invocamos a expres
 const express = require("express");
 const app = express();
@@ -76,7 +62,7 @@ app.get("/estilos.css", (req, res) => {
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
   const apellido = req.body.apellido;
-  const dni = req.body.dni;
+  const usuario = req.body.usuario;
   const edad = req.body.edad;
   const correo = req.body.correo;
   const pass = req.body.pass;
@@ -86,8 +72,8 @@ app.post("/login_y_registro", async (req, res) => {
     "INSERT INTO usuario SET?",
     {
       nombre: nombre,
+      usuario: usuario,
       apellido: apellido,
-      dni: dni,
       edad: edad,
       correo: correo,
       pass: passwordHash,
@@ -105,7 +91,7 @@ app.post("/login_y_registro", async (req, res) => {
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
-  const nombre = req.body.nombre;
+  const nombre = req.body.usuario;
   const pass = req.body.pass;
   let passwordHash = await bcrypt.hash(pass, 8);
   if (nombre && pass) {
@@ -129,45 +115,7 @@ app.post("/auth", async (req, res) => {
     );
   }
 });
-/*
-const express = require("express");
-const validacion = require("./validacion");
 
-const app = express();
-
-app.use(express.json());
-
-app.post("/login_y_registro", (req, res) => {
-  validacion.createUsersValidation(req.body);
-  const { nombre, apellido, dni, edad, correo, pass } = req.body;
-
-  res.json({
-    status: "ok",
-  });
-});
-
-app.put("/login_y_registro", (req, res) => {
-  const { nombre, apellido, dni, edad, correo, pass } = req.body;
-
-  if (
-    typeof nombre === "string" &&
-    nombre.length >= 5 &&
-    /^[a-z]+$/i.test(nombre)
-  ) {
-  }
-
-  res.json({
-    status: "ok",
-  });
-});
-
-app.use((error, req, res, next) => {
-  res.status(400).json({
-    status: "error",
-    message: error.message,
-  });
-});
-*/
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");

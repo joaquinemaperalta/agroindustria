@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-08-2021 a las 21:59:20
+-- Tiempo de generación: 12-08-2021 a las 00:05:13
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -42,10 +42,10 @@ CREATE TABLE `animales` (
 
 CREATE TABLE `usuario` (
   `id_usuario` int(10) NOT NULL,
-  `contraseña` varchar(50) DEFAULT NULL,
+  `usuario` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `pass` varchar(50) DEFAULT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `apellido` varchar(50) DEFAULT NULL,
-  `DNI` int(40) DEFAULT NULL,
   `edad` int(150) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='informacion del usuario registrado';
@@ -79,7 +79,8 @@ ALTER TABLE `animales`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- Indices de la tabla `vacas`
@@ -102,7 +103,7 @@ ALTER TABLE `animales`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `vacas`
