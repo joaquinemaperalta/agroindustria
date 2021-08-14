@@ -58,6 +58,29 @@ app.get("/estilos.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/estilos.css");
 });
 
+//formulario_Vacas
+app.get("/formulario_vacas.html", (req, res) => {
+  res.sendFile(__dirname + "/public/formulario_vacas.html");
+});
+
+//css de vacas
+app.get("/formulario_vacas_estilo.css", (req, res) => {
+  res.sendFile(__dirname + "/public/estilos/formulario_vacas_estilos.css");
+});
+
+
+//registro de vacas
+app.get("/registro_vacas.html", (req, res) => {
+  res.sendFile(__dirname + "/public/registro_vacas.html");
+});
+
+// css registro de vacas
+app.get("/registro_vacas.css", (req, res) => {
+  res.sendFile(__dirname + "/public/estilos/registro_vacas.css");
+});
+
+
+
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -115,6 +138,10 @@ app.post("/auth", async (req, res) => {
     );
   }
 });
+
+
+
+
 
 //routes
 app.listen(8080, function () {
