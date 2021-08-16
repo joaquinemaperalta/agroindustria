@@ -1,6 +1,7 @@
 //invocamos a expres
 const express = require("express");
 const app = express();
+const BCRYPT_SALT_ROUNDS = 8;
 
 //seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
@@ -68,7 +69,6 @@ app.get("/formulario_vacas_estilo.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/formulario_vacas_estilos.css");
 });
 
-
 //registro de vacas
 app.get("/registro_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/registro_vacas.html");
@@ -79,8 +79,6 @@ app.get("/registro_vacas.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/registro_vacas.css");
 });
 
-
-
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -89,8 +87,7 @@ app.post("/login_y_registro", async (req, res) => {
   const edad = req.body.edad;
   const correo = req.body.correo;
   const pass = req.body.pass;
-  let passwordHash = await bcrypt.hash(pass, 8);
-
+  let passwordHash = await bcrypt.hash(pass, BCRYPT_SALT_ROUNDS);
   connection.query(
     "INSERT INTO usuario SET?",
     {
@@ -116,15 +113,20 @@ app.post("/login_y_registro", async (req, res) => {
 app.post("/auth", async (req, res) => {
   const usuario = req.body.usuario;
   const pass = req.body.pass;
-  let passwordHash = await bcrypt.hash(pass, 8);
   if (usuario && pass) {
     connection.query(
       "SELECT * FROM usuario WHERE usuario = ?",
       [usuario],
+
       async (error, results) => {
+        console.log(results[0]);
+        console.log(pass);
+        console.log(results[0].pass);
+        let compare = await bcrypt.compare(pass, results[0].pass);
+        console.log(compare)
+        console.log(results.length == 0)
         if (
-          results.length == 0 ||
-          !(await bcrypt.compare(pass, results[0].pass))
+          results.length == 0 || !compare
         ) {
           res.send("usuario y/o password incorectas");
         } else {
@@ -138,10 +140,6 @@ app.post("/auth", async (req, res) => {
     );
   }
 });
-
-
-
-
 
 //routes
 app.listen(8080, function () {
