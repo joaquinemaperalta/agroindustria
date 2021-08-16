@@ -114,13 +114,13 @@ app.post("/login_y_registro", async (req, res) => {
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
-  const nombre = req.body.usuario;
+  const usuario = req.body.usuario;
   const pass = req.body.pass;
   let passwordHash = await bcrypt.hash(pass, 8);
-  if (nombre && pass) {
+  if (usuario && pass) {
     connection.query(
-      "SELECT * FROM usuario WHERE nombre = ?",
-      [nombre],
+      "SELECT * FROM usuario WHERE usuario = ?",
+      [usuario],
       async (error, results) => {
         if (
           results.length == 0 ||
