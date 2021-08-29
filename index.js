@@ -1,3 +1,6 @@
+const hbs = require("hbs");
+const controladorusuario = require("./controlador/controladorusuario");
+
 //invocamos a expres
 const express = require("express");
 const app = express();
@@ -123,11 +126,9 @@ app.post("/auth", async (req, res) => {
         console.log(pass);
         console.log(results[0].pass);
         let compare = await bcrypt.compare(pass, results[0].pass);
-        console.log(compare)
-        console.log(results.length == 0)
-        if (
-          results.length == 0 || !compare
-        ) {
+        console.log(compare);
+        console.log(results.length == 0);
+        if (results.length == 0 || !compare) {
           res.send("usuario y/o password incorectas");
         } else {
           //creamos una var de session y le asignamos true si INICIO SESSION
@@ -139,6 +140,17 @@ app.post("/auth", async (req, res) => {
       }
     );
   }
+});
+//Handlebars: Paginas dinamicas
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
+
+app.get("/vacas", controladorusuario.getAll);
+app.get("/holas");
+app.post("/");
+
+app.get("/holas", function (req, res) {
+  res.send("Hello World");
 });
 
 //routes
