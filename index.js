@@ -83,8 +83,8 @@ app.get("/registro_vacas.css", (req, res) => {
 });
 
 //registro de lote de vacas
-app.get("/lote_vacas", (req, res) => {
-  res.sendFile(__dirname + "/public/lote_vacas");
+app.get("/lote_vacas.html", (req, res) => {
+  res.sendFile(__dirname + "/public/lote_vacas.html");
 });
 
 //10- registracion
