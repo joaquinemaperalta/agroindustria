@@ -1,6 +1,6 @@
 //validacion de crear usuario
 function validar(event) {
-  var usuario, nombre, apellido, pass, edad, email, contra;
+  var usuario, nombre, apellido, pass, edad, email, contra, lote;
   usuario = document.getElementById("usuario").value;
   console.log(usuario);
   nombre = document.getElementById("nombre").value;

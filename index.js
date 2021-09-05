@@ -82,6 +82,11 @@ app.get("/registro_vacas.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/registro_vacas.css");
 });
 
+//registro de lote de vacas
+app.get("/lote_vacas", (req, res) => {
+  res.sendFile(__dirname + "/public/lote_vacas");
+});
+
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
