@@ -17,17 +17,20 @@
 
   <title>sign in & sign up form</title>
   <link rel="stylesheet" href="estilos/loginyregistro.css">
+  <script type="text/javascript" src="scripts/validar.js"></script>
 </head>
 
 <body>
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
+
         <form action="auth" method="POST" class="sign-in-form">
           <h2 class="title">Iniciar sesión</h2>
           <div class="input-field">
             <i class="fas fa-user"> </i>
-            <input type="text" name="nombre" placeholder="Nombre de Usuario">
+
+            <input type="text" name="usuario" placeholder="Nombre de Usuario">
           </div>
 
           <div class="input-field">
@@ -58,35 +61,37 @@
 
 
 
-        <form action="/login_y_registro" method="POST" class="sign-up-form">
+        <form action="/login_y_registro" method="POST" class="sign-up-form" onsubmit=" validar(event)">
           <h2 class="title">Registrate</h2>
           <div class="input-field">
             <i class="fas fa-user"> </i>
-            <input type="text" name="nombre" placeholder="Nombre de Usuario">
+            <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario">
           </div>
 
           <div class="input-field">
             <i class="fas fa-user"> </i>
-            <input type="text" name='apellido' placeholder="Apellido">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+          </div>
+
+          <div class="input-field">
+            <i class="fas fa-user"> </i>
+            <input type="text" id="apellido" name='apellido' placeholder="Apellido">
           </div>
 
           <div class="input-field">
             <i class="fas fa-envelope"> </i>
-            <input type="text" name="correo" placeholder="Email">
+            <input type="email" id="email" name="correo" placeholder="Email">
           </div>
 
           <div class="input-field">
-            <i class="fas fa-address-card"> </i>
-            <input type="text" name="dni" placeholder="DNI">
-          </div>
-          <div class="input-field">
             <i class="fas fa-child"> </i>
-            <input type="text" name="edad" placeholder="Edad">
+            <input type="text" id="edad" name="edad" placeholder="Edad">
           </div>
+
 
           <div class="input-field">
             <i class="fas fa-lock"> </i>
-            <input type="password" name="pass" placeholder="Contraseña">
+            <input type="password" id="pass" name="pass" placeholder="Contraseña">
           </div>
           <input type="submit" value="Registrate" class="btn solid">
 
@@ -132,7 +137,8 @@
       </div>
     </div>
   </div>
-  <script src="log_reg.js"></script>
+  <script src="scripts/log_reg.js"></script>
+
 
 
 
