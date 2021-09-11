@@ -3,7 +3,13 @@ const sequelize = require("../database/db");
 class Vaca extends Model {}
 Vaca.init(
   {
-    name: DataTypes.STRING,
+    id_vacas: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    raza: DataTypes.STRING,
+    edad: DataTypes.INTEGER,
+    peso: DataTypes.INTEGER,
   },
   { sequelize, modelName: "vacas" }
 );

@@ -5,12 +5,16 @@ async function getAll(req, res) {
   let vacas = await Vaca.findAll({
     attributes: ["id_vacas", "raza", "edad", "peso", "id_animal"],
   });
-  console.log("todas las vacas", JSON.stringify(vacas, null, 5));
-
-  res.render("vacas", {
-    vacas: JSON.stringify(vacas, null, 5),
-    name: "paginas de vaca",
-  });
+  let data = {
+    vacas: vacas,
+    name: "pagina de vacas",
+  };
+  res.render("vacas", data);
 }
 
 module.exports = { getAll };
+
+/*
+
+  res.render("vacas", {
+    vacas: JSON.stringify(vacas, null, 5),*/

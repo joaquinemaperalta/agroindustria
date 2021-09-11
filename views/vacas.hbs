@@ -30,25 +30,31 @@
           <button type="button" class="btn btn-secondary" onclick="showUserCreateBox()">Agregar</button>
         </div>
       </div>
-        {
-    <h1>Hola chicos</h1>
-    <p>Esta es la pagina de los {{name}}</p>
+    <h1>{{name}}</h1>
+    <p>Esta es la pagina de las vacas</p>
     
-      <div class="table-responsive">
+      <div id="table-responsive">
         <table class="table">
-          <thead>
+          <thead class="thead-dark">
             <tr>
-              <th scope="col">Id de la Vaca</th>
-              <th scope="col">Raza de la Vaca</th>
-              <th scope="col">Edad de la vaca</th>
-              <th scope="col">Peso de la Vaca</th>
+              <th scope="col">Id </th>
+              <th scope="col">Raza </th>
+              <th scope="col">Edad </th>
+              <th scope="col">Peso </th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody id="mytable">
+          <tbody >
+            {{#each vacas}}
             <tr>
-              <th scope="row" colspan="5"><p>{{vacas}}</p></th>
+              <th scope="row" >{{id_vacas}}</th>
+              <th scope="row" >{{raza}}</th>
+              <td>{{edad}}</td>
+              <td>{{peso}}</td>
+              <td>{{id_animal}}</td>
+              
             </tr>
+              {{/each}}
           </tbody>
         </table>
       </div>
