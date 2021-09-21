@@ -11,7 +11,14 @@ Vaca.init(
     edad: DataTypes.INTEGER,
     peso: DataTypes.INTEGER,
   },
+<<<<<<< HEAD
   { sequelize, modelName: "vacas", timestamps:false }
 );
 
 module.exports = Vaca;
+=======
+  { sequelize, modelName: "vacas" }
+);
+
+module.exports = Vaca;
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1

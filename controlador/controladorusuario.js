@@ -11,6 +11,7 @@ async function getAll(req, res) {
   };
   res.render("vacas", data);
 }
+<<<<<<< HEAD
 async function create(req, res) {
   const id_animal = req.body.id_animal;
   const raza = req.body.raza;
@@ -43,3 +44,12 @@ res.redirect('/vacas');
 
 
 module.exports = { getAll, create, delete_vacas };
+=======
+
+module.exports = { getAll };
+
+/*
+
+  res.render("vacas", {
+    vacas: JSON.stringify(vacas, null, 5),*/
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1

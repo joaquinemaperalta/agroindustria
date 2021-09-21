@@ -1,8 +1,13 @@
 const hbs = require("hbs");
 const controladorusuario = require("./controlador/controladorusuario");
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
 //invocamos a expres
 const express = require("express");
 const app = express();
+const BCRYPT_SALT_ROUNDS = 8;
 
 //seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
@@ -70,7 +75,10 @@ app.get("/formulario_vacas_estilo.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/formulario_vacas_estilos.css");
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
 //registro de vacas
 app.get("/registro_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/registro_vacas.html");
@@ -86,7 +94,10 @@ app.get("/lote_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/lote_vacas.html");
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -95,8 +106,7 @@ app.post("/login_y_registro", async (req, res) => {
   const edad = req.body.edad;
   const correo = req.body.correo;
   const pass = req.body.pass;
-  let passwordHash = await bcrypt.hash(pass, 8);
-
+  let passwordHash = await bcrypt.hash(pass, BCRYPT_SALT_ROUNDS);
   connection.query(
     "INSERT INTO usuario SET?",
     {
@@ -122,18 +132,25 @@ app.post("/formulario_vacas", controladorusuario.create);
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
+<<<<<<< HEAD
   const nombre = req.body.usuario;
+=======
+  const usuario = req.body.usuario;
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
   const pass = req.body.pass;
-  let passwordHash = await bcrypt.hash(pass, 8);
-  if (nombre && pass) {
+  if (usuario && pass) {
     connection.query(
-      "SELECT * FROM usuario WHERE nombre = ?",
-      [nombre],
+      "SELECT * FROM usuario WHERE usuario = ?",
+      [usuario],
+
       async (error, results) => {
-        if (
-          results.length == 0 ||
-          !(await bcrypt.compare(pass, results[0].pass))
-        ) {
+        console.log(results[0]);
+        console.log(pass);
+        console.log(results[0].pass);
+        let compare = await bcrypt.compare(pass, results[0].pass);
+        console.log(compare);
+        console.log(results.length == 0);
+        if (results.length == 0 || !compare) {
           res.send("usuario y/o password incorectas");
         } else {
           //creamos una var de session y le asignamos true si INICIO SESSION
@@ -146,6 +163,7 @@ app.post("/auth", async (req, res) => {
     );
   }
 });
+<<<<<<< HEAD
 
 //Handlebars: Paginas dinamicas
 app.set("view engine", "hbs");
@@ -192,10 +210,23 @@ app.post("/formulario_vacas", async (req, res) => {
       }
     }
   );
+=======
+//Handlebars: Paginas dinamicas
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
+
+app.get("/vacas", controladorusuario.getAll);
+app.get("/holas");
+app.post("/");
+
+app.get("/holas", function (req, res) {
+  res.send("Hello World");
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
 });
 */
 
 
+<<<<<<< HEAD
 
 
 
@@ -214,5 +245,7 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 }); */
 
+=======
+>>>>>>> ee54c46f7480bc369ec4aab82540948e4ba4a9b1
 //routes
 
