@@ -1,0 +1,44 @@
+{
+  "name": "mi_primer_app",
+  "version": "1.0.0",
+  "description": "Primera Aplicacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaquinemaperalta/agroindustria.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaquinemaperalta/agroindustria/issues"
+  },
+  "homepage": "https://github.com/joaquinemaperalta/agroindustria#readme",
+  "dependencies": {
+    "all": "^0.0.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "hbs": "^4.1.2",
+    "jquery": "^3.6.0",
+    "mongoose": "^5.13.4",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "notenv": "^2.0.3",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.6.5",
+    "sql": "^0.78.0"
+  }
+}
