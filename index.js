@@ -160,6 +160,9 @@ app.get("/holas", function (req, res) {
 //entrada borrar cosas
 app.get("/delete/:id_vacas", controladorusuario.delete_vacas);
 
+//entrada actualizar vaca
+app.get("/update/:id_vacas", controladorusuario.update_vacas);
+
 //entrada actualizar vacas
 /*app.get("/update/:id_vacas", controladorusuario.update_vacas);*/
 
