@@ -78,4 +78,9 @@ async function update_vacas(req, res) {
 
 
 
+
+
+
+
+
 module.exports = { getOne, getAll, create, delete_vacas, update_vacas };

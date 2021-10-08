@@ -85,6 +85,9 @@ app.get("/lote_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/lote_vacas.html");
 });
 
+
+
+
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -149,8 +152,13 @@ app.post("/auth", async (req, res) => {
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 
+
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/edit", function (err) {});
+
 app.get("/vacas", controladorusuario.getAll);
 app.get("/holas");
+
 app.get("/perfilvacas/:id_vacas", controladorusuario.getOne);
 app.post("/");
 
@@ -170,3 +178,4 @@ app.get("/update/:id_vacas", controladorusuario.update_vacas);
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
+
