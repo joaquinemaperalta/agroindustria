@@ -1,9 +1,11 @@
 const hbs = require("hbs");
-const controladorusuario = require("./controlador/controladorusuario");
+const controladorvacas = require("./controlador/controladorvacas");
+const bodyParser = require("body-parser");
+const rutas = require("./routes");
 //invocamos a expres
 const express = require("express");
 const app = express();
-
+app.use(bodyParser.json());
 //seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -33,6 +35,8 @@ app.use(
 
 //invocamos  l modulo de conexion de la BD
 const connection = require("./database/db");
+const { route } = require("./routes");
+const routes = require("./routes");
 
 //ESTABLECIENDOS LASS RUTAS:
 //middleware
@@ -116,7 +120,7 @@ app.post("/login_y_registro", async (req, res) => {
   );
 });
 //10- registracion vacas
-app.post("/formulario_vacas", controladorusuario.create);
+app.post("/formulario_vacas", controladorvacas.create);
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
@@ -149,21 +153,26 @@ app.post("/auth", async (req, res) => {
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 
-app.get("/vacas", controladorusuario.getAll);
+app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
-app.get("/perfilvacas/:id_vacas", controladorusuario.getOne);
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
 app.post("/");
 
 app.get("/holas", function (req, res) {
-  res.send("Hello World");
+  res.send("welcome to my api");
 });
 //entrada borrar cosas
-app.get("/delete/:id_vacas", controladorusuario.delete_vacas);
+app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
 
 //entrada actualizar vacas
-/*app.get("/update/:id_vacas", controladorusuario.update_vacas);*/
+/*app.get("/update/:id_vacas", controladorvacas.update_vacas);*/
 
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
+app.get("/api/vacas", controladorvacas.getAlljson);
+
+app.get("/api/vacas/{id_vaca}", controladorvacas.getOnejson);
+
+app.post("/api/vacas/create", controladorvacas.createjson);

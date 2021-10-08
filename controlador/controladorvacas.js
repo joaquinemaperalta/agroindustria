@@ -41,7 +41,7 @@ async function create(req, res) {
     peso: peso,
   });
 
-  res.redirect("/vacas", vacas);
+  res.redirect("/vacas");
 }
 
 async function delete_vacas(req, res) {
@@ -56,4 +56,37 @@ async function delete_vacas(req, res) {
   res.redirect("/vacas");
 }
 
-module.exports = { getOne, getAll, create, delete_vacas };
+async function getAlljson(req, res) {
+  let vacas = await Vaca.findAll({
+    attributes: ["id_vacas", "raza", "edad", "peso", "id_animal"],
+  });
+
+  res.json(vacas);
+}
+
+async function getOnejson(req, res) {
+  const { id_vacas } = req.params;
+  let vacas = await Vaca.findOne({
+    where: { id_vacas: id_vacas },
+  });
+  res.json(vacas);
+}
+async function createjson(req, res) {
+  let body = req.body;
+
+  let vaca = await Vaca.create({
+    raza: body.raza,
+    edad: body.edad,
+    peso: body.peso,
+  });
+  res.json(vaca);
+}
+module.exports = {
+  getOne,
+  getAll,
+  getAlljson,
+  getOnejson,
+  create,
+  createjson,
+  delete_vacas,
+};
