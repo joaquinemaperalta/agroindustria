@@ -22,7 +22,7 @@
 
     <div class="container">
       <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight"><h2>Vacas</div>
+        <div class="me-auto p-2 bd-highlight"></div>
           <div class="p-2 bd-highlight">
         <button type="button" class="btn btn-secondary" id="lote"> <a href="lote_vacas.html">Agregar Lote</a></button>
       </div>
@@ -31,9 +31,12 @@
             href="formulario_vacas.html">Agregar</a></button>
         </div>
       </div>
+      
     <h1>{{name}}</h1>
-    <p>Esta es la pagina de las vacas</p>
-    
+  
+      <br>
+    <p>Aqui encontraras todo sobre tus vacas</p>
+    <br>
       <div id="table-responsive">
         <table class="table">
           <thead class="thead-dark">
@@ -60,7 +63,7 @@
                 <a href="/delete/{{id_vacas}}" id="delete"  class="btn btn-danger">Borrar vaca</a> 
             
               
-                <a href="/update/{{id_vacas}}"  id="update" class="btn btn-secondary">actualizar vaca</a>
+                <a href="/vacas/update/{{id_vacas}}"  id="update" class="btn btn-secondary">actualizar vaca</a>
                 
             <a href="/perfilvacas/{{id_vacas}}"  id="perfilvacas" class="btn btn-secondary">ver vaca</a>
               </td>

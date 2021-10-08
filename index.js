@@ -153,8 +153,12 @@ app.post("/auth", async (req, res) => {
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/edit", function (err) {});
+
 app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
+
 app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
 app.post("/");
 
@@ -163,6 +167,9 @@ app.get("/holas", function (req, res) {
 });
 //entrada borrar cosas
 app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
+
+//entrada actualizar vaca
+app.get("/update/:id_vacas", controladorvacas.update_vacas);
 
 //entrada actualizar vacas
 /*app.get("/update/:id_vacas", controladorvacas.update_vacas);*/
@@ -176,3 +183,7 @@ app.get("/api/vacas", controladorvacas.getAlljson);
 app.get("/api/vacas/{id_vaca}", controladorvacas.getOnejson);
 
 app.post("/api/vacas/create", controladorvacas.createjson);
+
+app.get("/vacas", controladorvacas.getAll);
+app.get("/holas");
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);

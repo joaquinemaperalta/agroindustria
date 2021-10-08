@@ -55,6 +55,27 @@ async function delete_vacas(req, res) {
   });
   res.redirect("/vacas");
 }
+//actualizar vacas
+async function update_vacas(req, res) {
+  const id_animal = req.body.id_animal;
+  const raza = req.body.raza;
+  const edad = req.body.edad;
+  const peso = req.body.peso;
+
+  await Vaca.update(
+    {
+      id_animal: id_animal,
+      raza: id_animal,
+      edad: id_animal,
+      peso: id_animal,
+    },
+    {
+      where: {
+        id_vacas: id_vacas.req.body.id_vacas,
+      },
+    }
+  );
+}
 
 async function getAlljson(req, res) {
   let vacas = await Vaca.findAll({
@@ -89,4 +110,5 @@ module.exports = {
   create,
   createjson,
   delete_vacas,
+  update_vacas,
 };
