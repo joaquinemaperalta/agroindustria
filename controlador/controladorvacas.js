@@ -102,13 +102,47 @@ async function createjson(req, res) {
   });
   res.json(vaca);
 }
+
+async function delete_vacasjson(req, res) {
+  const { id_vacas } = req.params;
+
+  await Vaca.destroy({
+    where: {
+      id_vacas: id_vacas,
+    },
+  });
+  res.json("vaca eliminada");
+}
+
+async function update_vacasjson(req, res) {
+  const raza = req.body.raza;
+  const edad = req.body.edad;
+  const peso = req.body.peso;
+
+  let vaca = await Vaca.update(
+    {
+      raza: raza,
+      edad: edad,
+      peso: peso,
+    },
+    {
+      where: {
+        id_vacas: req.params.id_vacas,
+      },
+    }
+  );
+  res.json(vaca);
+}
+
 module.exports = {
   getOne,
   getAll,
-  getAlljson,
-  getOnejson,
   create,
-  createjson,
   delete_vacas,
   update_vacas,
+  getAlljson,
+  getOnejson,
+  createjson,
+  delete_vacasjson,
+  update_vacasjson,
 };

@@ -180,10 +180,13 @@ app.listen(8080, function () {
 });
 app.get("/api/vacas", controladorvacas.getAlljson);
 
-app.get("/api/vacas/{id_vaca}", controladorvacas.getOnejson);
+app.get("/api/vacas/:id_vacas", controladorvacas.getOnejson);
 
 app.post("/api/vacas/create", controladorvacas.createjson);
 
 app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
 app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+
+app.delete("/api/vacas/delete/:id_vacas", controladorvacas.delete_vacasjson);
+app.put("/api/vacas/:id_vacas", controladorvacas.update_vacasjson);

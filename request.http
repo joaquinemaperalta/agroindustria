@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/vacas HTTP/1.1
 
 ###
-GET http://localhost:8080/api/vacas/1 HTTP/1.1
+GET http://localhost:8080/api/vacas/3 HTTP/1.1
 
 
 
@@ -11,8 +11,26 @@ POST http://localhost:8080/api/vacas/create HTTP/1.1
 Content-Type: application/json
 
 {
-    "Raza": "angusss",
-    "Edad": 40,
-    "peso": 3,
+    "raza": "choicola",
+    "edad": 35,
+    "peso": 459
 }
+###
+DELETE http://localhost:8080/api/vacas/delete/14 HTTP/1.1
+
+
+###
+PUT http://localhost:8080/api/vacas/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "raza" : "choco", 
+    "edad" : 353,
+    "peso" : 4594
+}
+
+
+
+
+
 
