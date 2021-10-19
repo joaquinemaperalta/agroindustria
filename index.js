@@ -183,6 +183,7 @@ app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
 
+<<<<<<< HEAD
 /*//10- registracion
 app.post("/formulario_vacas", async (req, res) => {
   const id_animal = req.body.id_animal;
@@ -211,8 +212,12 @@ app.post("/formulario_vacas", async (req, res) => {
 });
 */
 
+=======
+app.get("/api/vacas/:id_vacas", controladorvacas.getOnejson);
+>>>>>>> d169aa3eef9cf00cbc7b6a4e894d05ad3af3e831
 
 
+<<<<<<< HEAD
 
 
 /*const http = require('http');
@@ -232,3 +237,11 @@ server.listen(port, hostname, () => {
 
 //routes
 
+=======
+app.get("/vacas", controladorvacas.getAll);
+app.get("/holas");
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+
+app.delete("/api/vacas/delete/:id_vacas", controladorvacas.delete_vacasjson);
+app.put("/api/vacas/:id_vacas", controladorvacas.update_vacasjson);
+>>>>>>> d169aa3eef9cf00cbc7b6a4e894d05ad3af3e831
