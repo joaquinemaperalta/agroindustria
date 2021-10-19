@@ -62,7 +62,7 @@ margin-bottom: 0;
     font-family: 'Baloo Tamma 2', sans-serif ;
     font-size: large;
     font-weight: bolder;
-    display: inline;
+    
     margin-right: 20px;}
 
   .info {
@@ -98,7 +98,17 @@ margin-bottom: 0;
     font-weight: normal;
     display: inline;
 }
+th{
+    font-size: 25px;
+    
+}
+  
+  
+th p{
+    font-family: Comic ;
+    color: red;
 
-  
-  
+}
+p { margin: 0 !important; }
+
 

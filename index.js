@@ -1,11 +1,9 @@
 const hbs = require("hbs");
-const controladorvacas = require("./controlador/controladorvacas");
-const bodyParser = require("body-parser");
-const rutas = require("./routes");
+const controladorusuario = require("./controlador/controladorusuario");
 //invocamos a expres
 const express = require("express");
 const app = express();
-app.use(bodyParser.json());
+
 //seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -35,8 +33,6 @@ app.use(
 
 //invocamos  l modulo de conexion de la BD
 const connection = require("./database/db");
-const { route } = require("./routes");
-const routes = require("./routes");
 
 //ESTABLECIENDOS LASS RUTAS:
 //middleware
@@ -89,6 +85,9 @@ app.get("/lote_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/lote_vacas.html");
 });
 
+
+
+
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -120,7 +119,7 @@ app.post("/login_y_registro", async (req, res) => {
   );
 });
 //10- registracion vacas
-app.post("/formulario_vacas", controladorvacas.create);
+app.post("/formulario_vacas", controladorusuario.create);
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
@@ -153,37 +152,83 @@ app.post("/auth", async (req, res) => {
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 
+
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/edit", function (err) {});
 
-app.get("/vacas", controladorvacas.getAll);
+app.get("/vacas", controladorusuario.getAll);
 app.get("/holas");
 
-app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+app.get("/perfilvacas/:id_vacas", controladorusuario.getOne);
+app.get("/editar_vacas/:id_vacas", controladorusuario.getXd);
 app.post("/");
 
 app.get("/holas", function (req, res) {
-  res.send("welcome to my api");
+  res.send("Hello World");
 });
 //entrada borrar cosas
-app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
+app.get("/delete/:id_vacas", controladorusuario.delete_vacas);
 
 //entrada actualizar vaca
-app.get("/update/:id_vacas", controladorvacas.update_vacas);
+app.post("/update/:id_vacas", controladorusuario.update_vacas);
+
+
+
 
 //entrada actualizar vacas
-/*app.get("/update/:id_vacas", controladorvacas.update_vacas);*/
+//app.get("/update/:id_vacas", controladorusuario.update_vacas);/
 
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
-app.get("/api/vacas", controladorvacas.getAlljson);
 
-app.get("/api/vacas/{id_vaca}", controladorvacas.getOnejson);
+/*//10- registracion
+app.post("/formulario_vacas", async (req, res) => {
+  const id_animal = req.body.id_animal;
+  const raza = req.body.raza;
+  const edad = req.body.edad;
+  const peso = req.body.peso;
 
-app.post("/api/vacas/create", controladorvacas.createjson);
+  
+  connection.query(
+    "INSERT INTO vacas SET?",
+    {
+      id_animal: id_animal,
+      raza: raza,
+      edad: edad,
+      peso: peso,
+    },
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send("alta exitosa");
+        //res.redirect('/');
+      }
+    }
+  );
+});
+*/
 
-app.get("/vacas", controladorvacas.getAll);
-app.get("/holas");
-app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+
+
+
+
+/*const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+}); */
+
+//routes
+

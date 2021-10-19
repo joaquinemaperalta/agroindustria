@@ -43,7 +43,7 @@ async function create(req, res) {
 
   res.redirect("/vacas");
 }
-
+//borrar vacas
 async function delete_vacas(req, res) {
   // Delete everyone named "Jane"
   const { id_vacas } = req.params;
@@ -55,60 +55,48 @@ async function delete_vacas(req, res) {
   });
   res.redirect("/vacas");
 }
-//actualizar vacas
+//actualizar vacas 
 async function update_vacas(req, res) {
-  const id_animal = req.body.id_animal;
+  console.log ("hola paso por aqui")
+  
   const raza = req.body.raza;
   const edad = req.body.edad;
   const peso = req.body.peso;
+  
+  await Vaca.update({ 
 
-  await Vaca.update(
-    {
-      id_animal: id_animal,
-      raza: id_animal,
-      edad: id_animal,
-      peso: id_animal,
-    },
-    {
-      where: {
-        id_vacas: id_vacas.req.body.id_vacas,
-      },
+   
+    raza: raza,
+    edad: edad,
+    peso: peso,
+  
+  }, {
+    where: {
+      
+      id_vacas: req.params.id_vacas
     }
-  );
-}
+  })
+  res.redirect("/vacas");};
 
-async function getAlljson(req, res) {
-  let vacas = await Vaca.findAll({
-    attributes: ["id_vacas", "raza", "edad", "peso", "id_animal"],
-  });
+  async function getXd(req, res) {
+    const { id_vacas } = req.params;
+    let vacas = await Vaca.findOne({
+      where: { id_vacas: id_vacas },
+    });
+    if (vacas === null) {
+      console.log("Not found!");
+    } else {
+      console.log(vacas instanceof Vaca); // true
+      console.log(Vaca.vacas); // 'My Title'
+    }
+    res.render("editar_vacas", {
+      vacas,
+    });
+  }
 
-  res.json(vacas);
-}
 
-async function getOnejson(req, res) {
-  const { id_vacas } = req.params;
-  let vacas = await Vaca.findOne({
-    where: { id_vacas: id_vacas },
-  });
-  res.json(vacas);
-}
-async function createjson(req, res) {
-  let body = req.body;
 
-  let vaca = await Vaca.create({
-    raza: body.raza,
-    edad: body.edad,
-    peso: body.peso,
-  });
-  res.json(vaca);
-}
-module.exports = {
-  getOne,
-  getAll,
-  getAlljson,
-  getOnejson,
-  create,
-  createjson,
-  delete_vacas,
-  update_vacas,
-};
+
+
+
+module.exports = { getXd, getOne, getAll, create, delete_vacas, update_vacas };

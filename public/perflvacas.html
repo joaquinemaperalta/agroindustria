@@ -3,18 +3,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/estilos/perfil.css" rel="stylesheet" type="text/css">
+        <link href="estilos/perfil.css" rel="stylesheet" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&family=Montserrat:wght@100&display=swap" rel="stylesheet">
    
 <link rel="stylesheet" title="main" type="text/css"
-href="/estilos/Sin.css">
-    <link rel="stylesheet" href="/estilos/font/fontello.css">
+href="estilos/Sin.css">
+    <link rel="stylesheet" href="estilos/font/fontello.css">
     
 
     
-    <!--------- width: 150px;nav and heade "<%=vacas.id% >" <input class="input" value={{id_vacas}}   type="text" name="id_animal" placeholder="Id de la Vaca">---------->    
+    <!---------nav and header---------->    
     <title>Agroindustria-home</title>
     </head>
     <body>
@@ -41,40 +41,37 @@ href="/estilos/Sin.css">
             
         <div class="name">
         <div class="img">
-        <img src="/imagenes/1088906889_0_155_1920_1241_600x0_80_0_0_8cc01d93e438aefd7c62b80fd2e22ce1.jpg" alt="">
-{{#with vacas}}
+        <img src="imagenes/1088906889_0_155_1920_1241_600x0_80_0_0_8cc01d93e438aefd7c62b80fd2e22ce1.jpg" alt="">
+
         </div>
             <div class="content">
-                <p class="p-1">vaca N°: {{id_vacas}} </p>
-                <p class="p-2">{{edad}} años,  </p>
+                <p class="p-1">vaquitas lindas xd </p>
+                <p class="p-2">17 años,  </p>
                 </div>     
             </div>
 
         </div>
     <div class="info">
-        <p class="tituloSeccion">informacion personal de la vaca: {{id_vacas}} </p>
+        <p class="tituloSeccion">informacion personal </p>
         <table class="table table-bordered">
             <tbody>
-              
                 <tr>
-                   <th style=""> identificacion</th>  
-                   
+                   <td style="width: 150px;"> identificacion</td>  
+                   <td c><?= $_SESION</td> 
 
                 </tr>  
-                    
                 <tr>
-                    <th><p style="display:inline">Id de la Vaca:</p> {{id_vacas}}</th> 
+                    <td>Id de la Vaca: </td> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Raza de la Vaca :</p>{{raza}}</th> 
+                    <td>Raza de la Vaca : </td> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Edad de la Vaca:</p>{{edad}}</th> 
+                    <td>Edad de la Vaca: </td> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Peso de la vaca:</p>{{peso}}</th> 
+                    <td>Peso de la vaca: </td> 
                  </tr> 
-                 {{/with}}
             </tbody>
 
         </table>

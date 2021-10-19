@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS  //<form cass="form-inline" method="POST"  action="/updte/{{id_vacas}}""></form>-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <title>Registro y control de vacas  </title>
@@ -22,7 +22,7 @@
 
     <div class="container">
       <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight"></div>
+        <div class="me-auto p-2 bd-highlight"><h2>Vacas</div>
           <div class="p-2 bd-highlight">
         <button type="button" class="btn btn-secondary" id="lote"> <a href="lote_vacas.html">Agregar Lote</a></button>
       </div>
@@ -31,30 +31,24 @@
             href="formulario_vacas.html">Agregar</a></button>
         </div>
       </div>
-      
     <h1>{{name}}</h1>
-  
-      <br>
-    <p>Aqui encontraras todo sobre tus vacas</p>
-    <br>
+    <p>Esta es la pagina de las vacas</p>
+    
       <div id="table-responsive">
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              
               <th scope="col">Id </th>
               <th scope="col">Raza </th>
               <th scope="col">Edad </th>
               <th scope="col">Peso </th>
-              <th scope="col"></th>
               <th scope="col">Acciones</th>
-              
             </tr>
           </thead>
           <tbody >
             {{#each vacas}}
             <tr>
-              <th scope="row" >{{id_vacas}}</th>
+              <th scope="row" ><a href="/perfilvacas/{{id_vacas}}">{{id_vacas}}</a></th>
               <th scope="row" >{{raza}}</th>
               <td>{{edad}}</td>
               <td>{{peso}}</td>
@@ -63,14 +57,12 @@
                 <a href="/delete/{{id_vacas}}" id="delete"  class="btn btn-danger">Borrar vaca</a> 
             
               
-                <a href="/vacas/update/{{id_vacas}}"  id="update" class="btn btn-secondary">actualizar vaca</a>
-                
-            <a href="/perfilvacas/{{id_vacas}}"  id="perfilvacas" class="btn btn-secondary">ver vaca</a>
+                <a href="/editar_vacas/{{id_vacas}}"  type="sumbit" class="btn btn-secondary">actualizar vaca</a>
+             
               </td>
-            
-            </tr>
-             {{/each}}
               
+            </tr>
+              {{/each}}
           </tbody>
         </table>
       </div>
