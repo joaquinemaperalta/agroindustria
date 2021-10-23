@@ -52,18 +52,19 @@
             </tr>
           </thead>
           <tbody >
-            {{#each vacas}}
+             {{#each vacas}}
             <tr>
-              <th scope="row" >{{id_vacas}}</th>
+              <th scope="row" ><a href="/perfilvacas/{{id_vacas}}">{{id_vacas}}</a></th>
               <th scope="row" >{{raza}}</th>
               <td>{{edad}}</td>
               <td>{{peso}}</td>
               <td>{{id_animal}}</td>
-              <td> 
+              <td>  
                 <a href="/delete/{{id_vacas}}" id="delete"  class="btn btn-danger">Borrar vaca</a> 
             
-              
-                <a href="/vacas/update/{{id_vacas}}"  id="update" class="btn btn-secondary">actualizar vaca</a>
+              <a href="/editar_vacas/{{id_vacas}}" id="update"  type="sumbit" class="btn btn-secondary">actualizar vaca</a>
+             
+           <!----<a href="/vacas/update/{{id_vacas}}"  id="update" class="btn btn-secondary">actualizar vaca</a>---->     
                 
             <a href="/perfilvacas/{{id_vacas}}"  id="perfilvacas" class="btn btn-secondary">ver vaca</a>
               </td>

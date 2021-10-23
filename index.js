@@ -171,7 +171,7 @@ app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
 
 //entrada actualizar vaca
 app.get("/update/:id_vacas", controladorvacas.update_vacas);
-
+app.get("/editar_vacas/:id_vacas", controladorvacas.getEdit);
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
