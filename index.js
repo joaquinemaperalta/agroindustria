@@ -1,9 +1,13 @@
 const hbs = require("hbs");
+const controladorvacas = require("./controlador/controladorvacas");
 const controladorusuario = require("./controlador/controladorusuario");
+const controladorinicio = require("./controlador/controladorinicio");
+const bodyParser = require("body-parser");
 //invocamos a expres
 const express = require("express");
 const app = express();
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -25,14 +29,16 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 app.use(
   session({
-    secret: "secret",
-    resave: true,
+    secret: "nosotros",
+    resave: false,
     saveUninitialized: true,
   })
 );
 
 //invocamos  l modulo de conexion de la BD
 const connection = require("./database/db");
+const { route } = require("./routes");
+const routes = require("./routes");
 
 //ESTABLECIENDOS LASS RUTAS:
 //middleware
@@ -42,14 +48,13 @@ app.use(express.static("public"));
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
-app.get("/login_y_registro", (req, res) => {
-  res.sendFile(__dirname + "/public/login_y_registro.html");
-});
 
 //home
-app.get("/home", (req, res) => {
-  res.sendFile(__dirname + "/public/home.html");
-});
+app.get("/home", controladorinicio.home);
+
+//homelogin
+app.get("/homelogin", controladorinicio.home);
+
 //nosotros
 app.get("/nosotros.html", (req, res) => {
   res.sendFile(__dirname + "/public/nosotros.html");
@@ -85,9 +90,6 @@ app.get("/lote_vacas.html", (req, res) => {
   res.sendFile(__dirname + "/public/lote_vacas.html");
 });
 
-
-
-
 //10- registracion
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
@@ -119,7 +121,7 @@ app.post("/login_y_registro", async (req, res) => {
   );
 });
 //10- registracion vacas
-app.post("/formulario_vacas", controladorusuario.create);
+app.post("/formulario_vacas", controladorvacas.create);
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
@@ -152,96 +154,41 @@ app.post("/auth", async (req, res) => {
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 
-
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/edit", function (err) {});
 
-app.get("/vacas", controladorusuario.getAll);
+app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
 
-app.get("/perfilvacas/:id_vacas", controladorusuario.getOne);
-app.get("/editar_vacas/:id_vacas", controladorusuario.getXd);
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
 app.post("/");
 
 app.get("/holas", function (req, res) {
-  res.send("Hello World");
+  res.send("welcome to my api");
 });
 //entrada borrar cosas
-app.get("/delete/:id_vacas", controladorusuario.delete_vacas);
+app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
 
 //entrada actualizar vaca
-app.post("/update/:id_vacas", controladorusuario.update_vacas);
-
-
-
-
-//entrada actualizar vacas
-//app.get("/update/:id_vacas", controladorusuario.update_vacas);/
+app.get("/update/:id_vacas", controladorvacas.update_vacas);
 
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
+app.get("/api/vacas", controladorvacas.getAlljson);
 
-<<<<<<< HEAD
-/*//10- registracion
-app.post("/formulario_vacas", async (req, res) => {
-  const id_animal = req.body.id_animal;
-  const raza = req.body.raza;
-  const edad = req.body.edad;
-  const peso = req.body.peso;
-
-  
-  connection.query(
-    "INSERT INTO vacas SET?",
-    {
-      id_animal: id_animal,
-      raza: raza,
-      edad: edad,
-      peso: peso,
-    },
-    async (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.send("alta exitosa");
-        //res.redirect('/');
-      }
-    }
-  );
-});
-*/
-
-=======
 app.get("/api/vacas/:id_vacas", controladorvacas.getOnejson);
->>>>>>> d169aa3eef9cf00cbc7b6a4e894d05ad3af3e831
 
+app.post("/api/vacas/create", controladorvacas.createjson);
 
-<<<<<<< HEAD
-
-
-/*const http = require('http');
-
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-}); */
-
-//routes
-
-=======
 app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
 app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
 
 app.delete("/api/vacas/delete/:id_vacas", controladorvacas.delete_vacasjson);
 app.put("/api/vacas/:id_vacas", controladorvacas.update_vacasjson);
->>>>>>> d169aa3eef9cf00cbc7b6a4e894d05ad3af3e831
+
+app.get("/login_y_registro", controladorusuario.login_registro);
+app.post("/registro", controladorusuario.registro);
+app.post("/iniciosesion", controladorusuario.session);

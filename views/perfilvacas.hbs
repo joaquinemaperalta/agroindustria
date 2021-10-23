@@ -14,7 +14,7 @@ href="/estilos/Sin.css">
     
 
     
-    <!--------- width: 150px;nav and heade "<%=vacas.id% >" <input class="input" value={{id_vacas}}   type="text" name="id_animal" placeholder="Id de la Vaca">---------->    
+    <!---------nav and header---------->    
     <title>Agroindustria-home</title>
     </head>
     <body>
@@ -30,9 +30,9 @@ href="/estilos/Sin.css">
             <input type="checkbox" id="menu-bar">
             <label class="fontawesome-align-justify" for="menu-bar"></label>
                     <nav class="menu">
-                        <a href="home.html">HOME</a>
-                        <a href="nosotros.html">ABOUR US</a>
-                        <a href="home.html">CONTACTO</a>
+                        <a href="home">HOME</a>
+                        <a href="nosotros.html">ABOUT US</a>
+                        <a href="home">CONTACTO</a>
                     </nav>
                 </div>
     </header>
@@ -42,37 +42,37 @@ href="/estilos/Sin.css">
         <div class="name">
         <div class="img">
         <img src="/imagenes/1088906889_0_155_1920_1241_600x0_80_0_0_8cc01d93e438aefd7c62b80fd2e22ce1.jpg" alt="">
-{{#with vacas}}
+
         </div>
             <div class="content">
-                <p class="p-1">vaca N°: {{id_vacas}} </p>
-                <p class="p-2">{{edad}} años,  </p>
+                <p class="p-1">vacas</p>
+                <p class="p-2">17 años,  </p>
                 </div>     
             </div>
 
         </div>
     <div class="info">
-        <p class="tituloSeccion">informacion personal de la vaca: {{id_vacas}} </p>
+        <p class="tituloSeccion">informacion personal </p>
         <table class="table table-bordered">
             <tbody>
-              
+              {{#with vacas}}
                 <tr>
-                   <th style=""> identificacion</th>  
+                   <th style="width: 150px;"> identificacion</th>  
                    
 
                 </tr>  
                     
                 <tr>
-                    <th><p style="display:inline">Id de la Vaca:</p> {{id_vacas}}</th> 
+                    <th>Id de la Vaca:{{id_vacas}}</th> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Raza de la Vaca :</p>{{raza}}</th> 
+                    <th>Raza de la Vaca :{{raza}} </th> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Edad de la Vaca:</p>{{edad}}</th> 
+                    <th>Edad de la Vaca: {{edad}}</th> 
                  </tr> 
                  <tr>
-                    <th><p style="display:inline">Peso de la vaca:</p>{{peso}}</th> 
+                    <th>Peso de la vaca: {{peso}}</th> 
                  </tr> 
                  {{/with}}
             </tbody>

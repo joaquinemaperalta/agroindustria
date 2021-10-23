@@ -1,5 +1,5 @@
 .bg-mynav {
-  background-color: #2c3e50;
+  background-color: #e4a32a;
 }
 
 body {
@@ -10,8 +10,24 @@ body {
 td {
     line-height: 3rem;
 }
-a:link { text-decoration: none;
+
+a{
+  text-decoration: none;
+  color: black;
 }
-a:visited {
-text-decoration: none;
+
+#lote{
+  background-color:#e4a32a;
+}
+
+#agregar{
+  background-color: #e4a32a;
+}
+
+#update{
+  background-color: green;
+}
+
+#perfilvacas{
+  background-color: indigo;
 }
