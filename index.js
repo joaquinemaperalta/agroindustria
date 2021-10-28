@@ -160,6 +160,9 @@ hbs.registerPartials(__dirname + "/views/edit", function (err) {});
 app.get("/vacas", controladorvacas.getAll);
 app.get("/holas");
 
+app.get("/formulario_vacas",controladorvacas.vista_formulario );
+
+
 app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
 app.post("/");
 

@@ -3,26 +3,20 @@ const { model, DataType } = require("sequelize");
 const sequelize = require("../database/db");
 const Usuario = require("../models/usuario");
 const bcrypt = require("bcryptjs");
-const BCRYPT_SALT_ROUNDS = 8;
 
 async function session(req, res) {
   let user = await Usuario.findOne({
     where: {
       usuario: req.body.usuario,
+      pass: req.body.pass,
     },
   });
-  console.log(req.body.pass, user.pass);
-  console.log(user.usuario);
-  // Load hash from your password DB.
-
-  bcrypt.compare(req.body.pass, user.pass, function (err, result) {
-    if (result) {
-      req.session.userid = user.id_usuario;
-      res.redirect("homelogin");
-    } else {
-      res.send("error");
-    }
-  });
+  if (user) {
+    req.session.userid = user.id_usuario;
+    res.redirect("homelogin");
+  } else {
+    res.send("error");
+  }
 }
 async function login_registro(req, res) {
   res.render("login_y_registro");
@@ -34,17 +28,16 @@ async function registro(req, res) {
   const edad = req.body.edad;
   const correo = req.body.correo;
   const pass = req.body.pass;
-  let passwordHash = await bcrypt.hash(pass, BCRYPT_SALT_ROUNDS);
 
   const usuarios = await Usuario.create({
     usuario: usuario,
-    pass: passwordHash,
+    pass: pass,
     nombre: nombre,
     apellido: apellido,
     edad: edad,
     correo: correo,
   });
-  console.log(req.body.pass);
+
   if (usuarios) {
     req.session.userid = usuarios.id_usuario;
     res.redirect("homelogin");

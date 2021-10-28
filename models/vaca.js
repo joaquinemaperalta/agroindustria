@@ -10,6 +10,7 @@ Vaca.init(
     raza: DataTypes.STRING,
     edad: DataTypes.INTEGER,
     peso: DataTypes.INTEGER,
+    id_usuario: DataTypes.STRING,
   },
   { sequelize, modelName: "vacas", timestamps:false }
 );
