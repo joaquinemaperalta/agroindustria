@@ -19,7 +19,7 @@ async function getOne(req, res) {
   const { id_vacas } = req.params;
   let vacas = await Vaca.findOne({
     where: { id_vacas: id_vacas ,
-      id_usuario: id_usuario},
+      id_usuario: req.session.userid},
   });
   if (vacas === null) {
     console.log("Not found!");
@@ -56,7 +56,7 @@ async function delete_vacas(req, res) {
   await Vaca.destroy({
     where: {
       id_vacas: id_vacas,
-      id_usuario: id_usuario
+      id_usuario: req.session.userid
     },
   });
   res.redirect("/vacas");
