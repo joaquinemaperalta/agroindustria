@@ -8,26 +8,26 @@ body {
 }
 
 td {
-    line-height: 3rem;
+  line-height: 3rem;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-#lote{
-  background-color:#e4a32a;
-}
-
-#agregar{
+#lote {
   background-color: #e4a32a;
 }
 
-#update{
+#agregar {
+  background-color: #e4a32a;
+}
+
+#update {
   background-color: green;
 }
 
-#perfilvacas{
+#perfilvacas {
   background-color: indigo;
 }

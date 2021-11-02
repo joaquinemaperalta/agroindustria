@@ -24,5 +24,19 @@ async function home(req, res) {
     res.render("home", data);
   }
 }
+async function logout(req, res) {
+  req.session.destroy(function () {
+    req.session = null;
 
-module.exports = { home };
+    res.redirect("home");
+  });
+}
+
+async function aboutus(req, res) {
+  res.render("nosotros");
+}
+async function aboutuss(req, res) {
+  res.render("nosotroslogin");
+}
+
+module.exports = { home, logout, aboutus, aboutuss };

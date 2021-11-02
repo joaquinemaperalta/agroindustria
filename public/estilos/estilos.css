@@ -7,7 +7,7 @@
 .header {
   min-height: 100vh;
   width: 100%;
-  background-image: url("../imagenes/quiza.jpg");
+  background-image: url("../imagenes/bannerprincipal.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -35,6 +35,10 @@ nav {
 
 nav img {
   width: 300px;
+  display: flex;
+  padding: 1% -1%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
@@ -51,7 +55,7 @@ nav img {
 }
 
 .nav-links ul li a {
-  color: rgb(255, 255, 255);
+  color: rgb(15, 3, 3);
   text-decoration: none;
   font-size: 13px;
 }
@@ -303,7 +307,7 @@ h3 {
   margin: 100px auto;
   width: 80%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("../imagenes/banner2.jpg");
+    url("../imagenes/banner.jpg");
   background-position: center;
   background-size: cover;
   border-radius: 10px;
@@ -345,4 +349,11 @@ h3 {
 
 .fa-heart-o {
   color: crimson;
+}
+
+.nav divul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 20px;
+  position: relative;
 }

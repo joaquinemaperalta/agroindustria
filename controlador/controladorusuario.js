@@ -42,7 +42,7 @@ async function registro(req, res) {
     req.session.userid = usuarios.id_usuario;
     res.redirect("homelogin");
   } else {
-    res.send("error");
+    res.send("eraaasr");
   }
 }
 

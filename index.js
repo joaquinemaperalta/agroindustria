@@ -1,8 +1,10 @@
 const hbs = require("hbs");
 const controladorvacas = require("./controlador/controladorvacas");
 const controladorusuario = require("./controlador/controladorusuario");
+const controlador_razas = require("./controlador/controlador_razas");
 const controladorinicio = require("./controlador/controladorinicio");
 const bodyParser = require("body-parser");
+
 //invocamos a expres
 const express = require("express");
 const app = express();
@@ -45,29 +47,23 @@ const routes = require("./routes");
 
 app.use(express.static("public"));
 
-app.get("/", function (req, res) {
-  res.send("Hello World");
-});
-
 //home
 app.get("/home", controladorinicio.home);
 
 //homelogin
 app.get("/homelogin", controladorinicio.home);
 
+//cerrarsesion
+app.get("/logout", controladorinicio.logout);
+
 //nosotros
-app.get("/nosotros.html", (req, res) => {
-  res.sendFile(__dirname + "/public/nosotros.html");
-});
+app.get("/nosotros", controladorinicio.aboutus);
+
+app.get("/nosotroslogin", controladorinicio.aboutuss);
 
 //css
 app.get("/estilos.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/estilos.css");
-});
-
-//formulario_Vacas
-app.get("/formulario_vacas.html", (req, res) => {
-  res.sendFile(__dirname + "/public/formulario_vacas.html");
 });
 
 //css de vacas
@@ -75,22 +71,15 @@ app.get("/formulario_vacas_estilo.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/formulario_vacas_estilos.css");
 });
 
-//registro de vacas
-app.get("/registro_vacas.html", (req, res) => {
-  res.sendFile(__dirname + "/public/registro_vacas.html");
-});
+//- registro vacas
+app.post("/formulario_vacas", controladorvacas.create);
 
 // css registro de vacas
 app.get("/registro_vacas.css", (req, res) => {
   res.sendFile(__dirname + "/public/estilos/registro_vacas.css");
 });
 
-//registro de lote de vacas
-app.get("/lote_vacas.html", (req, res) => {
-  res.sendFile(__dirname + "/public/lote_vacas.html");
-});
-
-//10- registracion
+//10- registrarse
 app.post("/login_y_registro", async (req, res) => {
   const nombre = req.body.nombre;
   const apellido = req.body.apellido;
@@ -120,8 +109,6 @@ app.post("/login_y_registro", async (req, res) => {
     }
   );
 });
-//10- registracion vacas
-app.post("/formulario_vacas", controladorvacas.create);
 
 //11 - Metodo para la autenticacion
 app.post("/auth", async (req, res) => {
@@ -142,9 +129,6 @@ app.post("/auth", async (req, res) => {
           //creamos una var de session y le asignamos true si INICIO SESSION
           res.send("LOGIN CORRECTO");
         }
-
-        //Mensaje simple y poco vistoso
-        //res.send('Incorrect Username and/or Password!');
       }
     );
   }
@@ -157,41 +141,54 @@ hbs.registerPartials(__dirname + "/views/cosas", function (err) {});
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/edit", function (err) {});
 
-app.get("/vacas", controladorvacas.getAll);
-app.get("/holas");
-
-app.get("/formulario_vacas",controladorvacas.vista_formulario );
-
-
-app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
-app.post("/");
-
-app.get("/holas", function (req, res) {
-  res.send("welcome to my api");
-});
-//entrada borrar cosas
-app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
-
-//entrada actualizar vaca
-app.get("/update/:id_vacas", controladorvacas.update_vacas);
-app.get("/editar_vacas/:id_vacas", controladorvacas.getEdit);
 //routes
 app.listen(8080, function () {
   console.log("corriendo en el puerto");
 });
+
+// ver todas las vacas
+app.get("/vacas", controladorvacas.getAll);
+
+//registro de vacas
+app.get("/formulario_vacas", controladorvacas.vista_formulario);
+//ver el perfil de una vaca
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+app.post("/");
+
+//borrar vacas
+app.get("/delete/:id_vacas", controladorvacas.delete_vacas);
+
+// actualizar vaca
+app.get("/update/:id_vacas", controladorvacas.update_vacas);
+app.get("/editar_vacas/:id_vacas", controladorvacas.getEdit);
+
+//api ver todas las vacas
 app.get("/api/vacas", controladorvacas.getAlljson);
 
+//api ver una vaca
 app.get("/api/vacas/:id_vacas", controladorvacas.getOnejson);
 
+//api crear una vaca
 app.post("/api/vacas/create", controladorvacas.createjson);
 
-app.get("/vacas", controladorvacas.getAll);
-app.get("/holas");
-app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
-
+//api borrar vaca
 app.delete("/api/vacas/delete/:id_vacas", controladorvacas.delete_vacasjson);
+
+//api actualizar vacas
 app.put("/api/vacas/:id_vacas", controladorvacas.update_vacasjson);
 
+app.get("/vacas", controladorvacas.getAll);
+
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+
+app.get("/vacas", controladorvacas.getAll);
+
+app.get("/perfilvacas/:id_vacas", controladorvacas.getOne);
+
 app.get("/login_y_registro", controladorusuario.login_registro);
+
 app.post("/registro", controladorusuario.registro);
+
 app.post("/iniciosesion", controladorusuario.session);
+
+app.get("/api/razas", controlador_razas.getAllRazas);

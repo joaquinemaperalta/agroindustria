@@ -16,11 +16,10 @@
            
             <p>Ingrese</p>
             <form action="/formulario_vacas" method="POST"class="inputs-container">
-                <input class="input" type="text" name="id_animal" placeholder="Id de la Vaca">
 				<input class="input" type="text" name="raza" placeholder="Raza de la Vaca ">
 				<input class="input" type="number" name="edad"  step="0.01"  placeholder="Edad de la Vaca">
                 <input class="input" type="number" name="peso" step="0.10"  placeholder="Peso de la vaca">
-                <input  class="input"  name="id_usuario"  value="{{id_usuario}}"  > 
+                <input  type="hidden" class="input"  name="id_usuario"  value="{{id_usuario}}"  > 
                 <button class="btn"> </a>Registrar Vaca </a></button>
                 
             </form>
