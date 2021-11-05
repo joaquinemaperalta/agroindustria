@@ -41,6 +41,7 @@ app.use(
 const connection = require("./database/db");
 const { route } = require("./routes");
 const routes = require("./routes");
+const Razas = require("./models/razas");
 
 //ESTABLECIENDOS LASS RUTAS:
 //middleware
@@ -192,3 +193,4 @@ app.post("/registro", controladorusuario.registro);
 app.post("/iniciosesion", controladorusuario.session);
 
 app.get("/api/razas", controlador_razas.getAllRazas);
+

@@ -27,12 +27,16 @@
   </head>
 
   <body>
-
+    <script>
+      let alertar = new URL(window.location.href).searchParams.get("alert")
+      if(alertar == "true") window.alert("Datos incorrectos")
+    </script>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
 
           <form action="iniciosesion" method="POST" class="sign-in-form">
+
             <h2 class="title">Iniciar sesión</h2>
             <div class="input-field">
               <i class="fas fa-user"> </i>
@@ -48,7 +52,12 @@
               <i class="fas fa-lock"> </i>
               <input type="password" name="pass" placeholder="Contraseña" />
             </div>
-            <input type="submit" value="Iniciar sesión" class="btn solid" />
+            <input
+              type="submit"
+              value="Iniciar sesión"
+              class="btn solid"
+              id="boton"
+            />
 
           </form>
 

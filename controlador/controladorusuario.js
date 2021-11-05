@@ -15,9 +15,10 @@ async function session(req, res) {
     req.session.userid = user.id_usuario;
     res.redirect("homelogin");
   } else {
-    res.send("error");
+    res.redirect("login_y_registro?alert=true");
   }
 }
+
 async function login_registro(req, res) {
   res.render("login_y_registro");
 }

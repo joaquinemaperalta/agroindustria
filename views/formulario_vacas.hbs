@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <script src="./scripts/api.js"></script>
     <link rel="stylesheet" href="estilos/formulario_vacas_estilo.css">
     
     <title>Formulario de Vacas</title>
@@ -16,7 +16,12 @@
            
             <p>Ingrese</p>
             <form action="/formulario_vacas" method="POST"class="inputs-container">
-				<input class="input" type="text" name="raza" placeholder="Raza de la Vaca ">
+
+				<select  id="razas" class="input" name="razas"> 
+<option value="disabled selected"> razas</option>
+<option value="1">razas</option>
+
+</select>
 				<input class="input" type="number" name="edad"  step="0.01"  placeholder="Edad de la Vaca">
                 <input class="input" type="number" name="peso" step="0.10"  placeholder="Peso de la vaca">
                 <input  type="hidden" class="input"  name="id_usuario"  value="{{id_usuario}}"  > 
@@ -26,6 +31,5 @@
           </div>
             <img class="image-container" src="imagenes/login_vacas.svg" alt="">
       </div>
-
 </body>
 </html>
