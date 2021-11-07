@@ -18,11 +18,12 @@
             <form action="/update/{{id_vacas}}" method="POST"class="inputs-container">
         <label class=" visible" >Raza de la Vaca:</label>      
 				<input class="input"  value = :{{raza}}  type ="text" name="raza" placeholder="Raza de la Vaca ">
+        
         <label class=" visible" for="Edad de la Vaca">Edad de la Vaca:</label> 
 				<input class="input" value= {{edad}} type="number" name="edad"  step="0.01"  placeholder="Edad de la Vaca">
         <label class=" visible" for="contrasena">Peso de la vaca:</label> 
                 <input class="input" value={{peso}} type="number" name="peso" step="0.10"  placeholder="Peso de la vaca">
-
+              <input type="hidden" value={{id_usuario}} type="number" name="id_usuario" step="0.10"  placeholder="Id_usuario">
                 <input  type="submit"  class="btn" value="Actualizar Vaca">
                 
             </form>

@@ -17,11 +17,10 @@
             <p>Ingrese</p>
             <form action="/formulario_vacas" method="POST"class="inputs-container">
 
-				<select  id="razas" class="input" name="razas"> 
-<option value="disabled selected"> razas</option>
-<option value="1">razas</option>
-
-</select>
+				<select  id="razas" class="input" name="raza"> 
+          <option value="disabled selected"> razas</option>
+          <option value="1">razas</option>
+       </select>
 				<input class="input" type="number" name="edad"  step="0.01"  placeholder="Edad de la Vaca">
                 <input class="input" type="number" name="peso" step="0.10"  placeholder="Peso de la vaca">
                 <input  type="hidden" class="input"  name="id_usuario"  value="{{id_usuario}}"  > 

@@ -2,15 +2,15 @@ const { data } = require("jquery");
 const { model, DataType } = require("sequelize");
 const sequelize = require("../database/db");
 const Vaca = require("../models/vaca");
+
 async function getAll(req, res) {
   let vacas = await Vaca.findAll({
     attributes: ["id_vacas", "raza", "edad", "peso", "id_animal", "id_usuario"],
-    where: 
-    {id_usuario :  req.session.userid, },
+    where: { id_usuario: req.session.userid },
   });
   let data = {
     vacas: vacas,
-    name: "pagina de vacas",
+    name: "Listado de vacas",
   };
   res.render("vacas", data);
 }
@@ -18,8 +18,7 @@ async function getAll(req, res) {
 async function getOne(req, res) {
   const { id_vacas } = req.params;
   let vacas = await Vaca.findOne({
-    where: { id_vacas: id_vacas ,
-      id_usuario: req.session.userid},
+    where: { id_vacas: id_vacas, id_usuario: req.session.userid },
   });
   if (vacas === null) {
     console.log("Not found!");
@@ -56,14 +55,14 @@ async function delete_vacas(req, res) {
   await Vaca.destroy({
     where: {
       id_vacas: id_vacas,
-      id_usuario: req.session.userid
+      id_usuario: req.session.userid,
     },
   });
   res.redirect("/vacas");
 }
 //actualizar vacas
 async function update_vacas(req, res) {
-  const id_animal = req.body.id_animal;
+  const id_usuario = req.body.id_usuario;
   const raza = req.body.raza;
   const edad = req.body.edad;
   const peso = req.body.peso;
@@ -117,7 +116,7 @@ async function createjson(req, res) {
   let body = req.body;
 
   let vaca = await Vaca.create({
-    id_usuario : id_usuario,
+    id_usuario: id_usuario,
     raza: body.raza,
     edad: body.edad,
     peso: body.peso,
@@ -157,11 +156,11 @@ async function update_vacasjson(req, res) {
 }
 
 async function vista_formulario(req, res) {
-  
-  res.render("formulario_vacas", 
-  
-{id_usuario: req.session.userid});
-  
+  res.render(
+    "formulario_vacas",
+
+    { id_usuario: req.session.userid }
+  );
 }
 module.exports = {
   vista_formulario,
