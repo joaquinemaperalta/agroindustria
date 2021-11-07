@@ -49,7 +49,9 @@ const Razas = require("./models/razas");
 app.use(express.static("public"));
 
 //home
-app.get("/home", controladorinicio.home);
+
+
+app.get("/", controladorinicio.home);
 
 //homelogin
 app.get("/homelogin", controladorinicio.home);

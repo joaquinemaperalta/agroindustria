@@ -95,8 +95,13 @@ th {
 
 th p {
   font-family: Comic;
-  color: red;
+  color:black;
+  padding-right: 0%;
 }
 p {
   margin: 0 !important;
+
+}
+th{
+  color: white;
 }

@@ -140,3 +140,9 @@ body {
         margin: 0;
     }
 }
+
+.visible {
+
+text-align: left;
+color: #1e49a7;
+}
