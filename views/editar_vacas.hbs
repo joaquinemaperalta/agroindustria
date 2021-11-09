@@ -1,36 +1,95 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../estilos/formulario_vacas_estilo.css">
-    
-    <title>Formulario de Vacas</title>
-</head>
-<body>
-      <div class="login-container">
-          <div class="login-info-container">
-            <h1 class="title">Ingrese los nuevos datos de su vaca</h1>
-            {{#with vacas}}
-            <p>Ingrese</p>
-            <form action="/update/{{id_vacas}}" method="POST"class="inputs-container">
-        <label class=" visible" >Raza de la Vaca:</label>      
-				<input class="input"  value = :{{raza}}  type ="text" name="raza" placeholder="Raza de la Vaca ">
-        
-        <label class=" visible" for="Edad de la Vaca">Edad de la Vaca:</label> 
-				<input class="input" value= {{edad}} type="number" name="edad"  step="0.01"  placeholder="Edad de la Vaca">
-        <label class=" visible" for="contrasena">Peso de la vaca:</label> 
-                <input class="input" value={{peso}} type="number" name="peso" step="0.10"  placeholder="Peso de la vaca">
-              <input type="hidden" value={{id_usuario}} type="number" name="id_usuario" step="0.10"  placeholder="Id_usuario">
-                <input  type="submit"  class="btn" value="Actualizar Vaca">
-                
-            </form>
-            {{/with}}
-          </div>
-            <img class="image-container" src="../imagenes/login_vacas.svg" alt="">
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/scripts/api.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <link rel="stylesheet" href="../estilos/formulario_vacas_estilo.css" />
+    <link rel="stylesheet" href="estilos/formulario_vacas_estilo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      title="main"
+      type="text/css"
+      href="/estilos/Sin.css"
+    />
+    <link rel="stylesheet" href="/estilos/font/fontello.css" />
+    <link href="/estilos/perfil.css" rel="stylesheet" type="text/css" />
+
+    <title>Formulario de Vacas</title>
+  </head>
+  <body>
+            <nav>
+               
+            
+    <header>
+        <div class="contenedor">
+            
+            <h1 class= "noAnda">Agroindustria&nbsp;&nbsp;</h1> 
+            <input type="checkbox" id="menu-bar">
+            <label class="fontawesome-align-justify" for="menu-bar"></label>
+                    <nav class="menu">
+                        <a href="/home">HOME</a>
+                        <a href="/vacas">LISTADO DE VACAS</a>
+                        <a href="/logout">CERRAR SESION</a>
+                    </nav>
+                </div>
+    </header>
+    <div class="login-container">
+      <div class="login-info-container">
+        <h1 class="title">Ingrese los nuevos datos de su vaca</h1>
+        {{#with vacas}}
+          <p>Ingrese</p>
+          <form
+            action="/update/{{id_vacas}}"
+            method="POST"
+            class="inputs-container"
+          >
+            <label class="visible">Raza de la Vaca:</label>
+            <select id="razas" class="input" name="raza">
+              <option value="disabled selected"> razas</option>
+              <option value="1">razas</option>
+            </select>
+
+            <label class="visible" for="Edad de la Vaca">Edad de la Vaca:</label>
+            <input
+              class="input"
+              value={{edad}}
+              type="number"
+              name="edad"
+              step="0.01"
+              placeholder="Edad de la Vaca"
+            />
+            <label class="visible" for="contrasena">Peso de la vaca:</label>
+            <input
+              class="input"
+              value={{peso}}
+              type="number"
+              name="peso"
+              step="0.10"
+              placeholder="Peso de la vaca"
+            />
+            <input
+              type="hidden"
+              value={{id_usuario}}
+              type="number"
+              name="id_usuario"
+              step="0.10"
+              placeholder="Id_usuario"
+            />
+            <input type="submit" class="btn" value="Actualizar Vaca" />
+
+          </form>
+        {{/with}}
+      </div>
+      <img class="image-container" src="../imagenes/login_vacas.svg" alt="" />
+    </div>
+
+  </body>
 </html>
